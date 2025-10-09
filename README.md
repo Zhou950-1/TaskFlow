@@ -1,3 +1,8 @@
-**Nombre:** Zhou Zhihui
+# TaskFlow
+**[Nombre]:** 
 ---
-**Comentario:** Un proyecto de prueba llamado TaskFlow, desplegado con XAMPP en Debian 13 situado en el directorio raíz /opt/lampp/htdocs/TaskFlow
+Zhou Zhihui
+
+**[Comentario]:** 
+---
+Un proyecto de clase enfocado en tecnologías web, como PHP, HTML, CSS, JS y otros lenguajes.
