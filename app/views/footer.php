@@ -1,6 +1,6 @@
         </main>
         <footer class="footer">
-            <p>Todos los derechos reservados</p>
+            <p>© <?php echo date('Y'); ?> TaskFlow</p>
             <img src="../IMG/zhou-zhihui-seal.png" alt="zhou zhihui seal" class="seal">
         </footer>
     </body>

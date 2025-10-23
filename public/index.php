@@ -1,5 +1,5 @@
 <?php
-    require '../app/functions.php';
+    require_once '../app/functions.php';
 
     define("SITE_NAME", "TaskFlow");
     $pageTitle = SITE_NAME . " - Página de Inicio"; // el punto . sirve para concatenar en PHP
@@ -21,29 +21,9 @@
     <?php foreach ($tasks as $task): ?>
         <?php 
 
-            $taskClasses = "task-item";
-
-            if ($task['completed'] == true) {
-                $taskClasses .= ' completed';
-            }
-
-            switch ($task['priority']) {
-                case 'alta':
-                    $taskClasses .= ' priority-alta';
-                    break;
-                case 'media':
-                    $taskClasses .= ' priority-media';
-                    break;
-                case 'baja':
-                    $taskClasses .= ' priority-baja';
-                    break;
-            }
+            echo renderizarTarea($task);
                     
         ?>
-        <!--Así se añaden clases dinámicamente a un HTML con PHP, para el CSS-->
-        <li class="<?php echo $taskClasses; ?>">
-            <?php echo htmlspecialchars($task['title']); ?>
-        </li>
     <?php endforeach; ?>
 </ul>
 
