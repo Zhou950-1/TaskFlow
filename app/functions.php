@@ -31,6 +31,4 @@ function renderizarTarea($task) {
     return "<li class=\"$taskClasses\">" . htmlspecialchars($task['title']) . "</li>";
 }
 
-
-
 ?>
