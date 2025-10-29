@@ -16,8 +16,8 @@
 <?php include '../app/views/header.php' ?>
 
 <h2>Tareas Pendientes</h2>
+<p class="date-display"><?php echo formatDate("2025-10-15"); ?></p>
 <ul>
-    <?php echo formatDate("2025-10-15"); ?>
     <?php foreach ($tasks as $task): ?>
         <?php 
 
