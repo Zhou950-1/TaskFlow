@@ -65,7 +65,7 @@ ul {
 }
 
 /* Ítem de tarea */
-.task-item {
+.objeto-tarea {
     display: flex;
     align-items: center;
     padding: 16px;
@@ -77,25 +77,25 @@ ul {
     transition: var(--transition);
 }
 
-.task-item:hover {
+.objeto-tarea:hover {
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 /* Prioridades */
-.task-item.priority-alta {
+.objeto-tarea.prioridad-alta {
     border-left-color: var(--color-priority-alta);
 }
 
-.task-item.priority-media {
+.objeto-tarea.prioridad-media {
     border-left-color: var(--color-priority-media);
 }
 
-.task-item.priority-baja {
+.objeto-tarea.prioridad-baja {
     border-left-color: var(--color-priority-baja);
 }
 
 /* Tareas completadas */
-.task-item.completed {
+.objeto-tarea.completado {
     opacity: 0.85;
     text-decoration: line-through;
     color: var(--color-muted);

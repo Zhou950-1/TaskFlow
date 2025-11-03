@@ -5,30 +5,33 @@ function formatDate($dateString) {
     return date('d/m/Y', $timestamp);
 }
 
-function obtenerClasePrioridad($priority) {
-    switch ($priority) {
+function obtenerClasePrioridad($prioridad) {
+    switch ($prioridad) {
         case 'alta':
-            return ' priority-alta';
+            return ' prioridad-alta';
             break;
         case 'media':
-            return ' priority-media';
+            return ' prioridad-media';
             break;
         case 'baja':
-            return ' priority-baja';
+            return ' prioridad-baja';
+            break;
+        default:
+            return '';
             break;
     }
 }
 
-function renderizarTarea($task) {
-    $taskClasses = "task-item";
+function renderizarTarea($tarea) {
+    $claseEstilos = "objeto-tarea";
 
-    if ($task['completed'] == true) {
-        $taskClasses .= ' completed';
+    if ($tarea['completado'] == true) {
+        $claseEstilos .= ' completado';
     }
 
-    $taskClasses .= obtenerClasePrioridad($task['priority']);
+    $claseEstilos .= obtenerClasePrioridad($tarea['prioridad']);
 
-    return "<li class=\"$taskClasses\">" . htmlspecialchars($task['title']) . "</li>";
+    return "<li class=\"$claseEstilos\">" . htmlspecialchars($tarea['titulo']) . "</li>";
 }
 
 ?>

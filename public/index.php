@@ -4,12 +4,12 @@
     define("SITE_NAME", "TaskFlow");
     $pageTitle = SITE_NAME . " - Página de Inicio"; // el punto . sirve para concatenar en PHP
 
-    $tasks = [
-        ['title' => 'tarea 1', 'completed' => true, 'priority' => 'alta'],
-        ['title' => 'tarea 2', 'completed' => false, 'priority' => 'baja'],
-        ['title' => 'tarea 3', 'completed' => false, 'priority' => 'media'],
-        ['title' => 'tarea 4', 'completed' => true, 'priority' => 'baja'],
-        ['title' => 'tarea 5', 'completed' => true, 'priority' => 'alta']
+    $tareas = [
+        ['titulo' => 'tarea 1', 'completado' => true, 'prioridad' => 'alta'],
+        ['titulo' => 'tarea 2', 'completado' => false, 'prioridad' => 'baja'],
+        ['titulo' => 'tarea 3', 'completado' => false, 'prioridad' => 'media'],
+        ['titulo' => 'tarea 4', 'completado' => true, 'prioridad' => 'baja'],
+        ['titulo' => 'tarea 5', 'completado' => true, 'prioridad' => 'alta']
     ];
 ?>
 
@@ -18,10 +18,10 @@
 <h2>Tareas Pendientes</h2>
 <p class="date-display"><?php echo formatDate("2025-10-15"); ?></p>
 <ul>
-    <?php foreach ($tasks as $task): ?>
+    <?php foreach ($tareas as $tarea): ?>
         <?php 
 
-            echo renderizarTarea($task);
+            echo renderizarTarea($tarea);
                     
         ?>
     <?php endforeach; ?>
