@@ -1,32 +1,54 @@
 <?php
-    require_once '../app/functions.php';
+// 1. Cargar todas nuestras herramientas
+require_once '../app/functions.php'; // Funciones de la PE3
+require_once '../app/data.php'; // Nuestro "Modelo" de datos
+require_once '../app/controllers/AuthController.php'; // Nuestro "Controlador" de autenticación
 
-    define("SITE_NAME", "TaskFlow");
-    $pageTitle = SITE_NAME . " - Página de Inicio"; // el punto . sirve para concatenar en PHP
+// 2. Lógica del Router (Controlador Frontal)
+$accion = $_GET['accion'] ?? 'login'; // Acción por defecto: 'login'
 
-    $tareas = [
-        ['titulo' => 'tarea 1', 'completado' => true, 'prioridad' => 'alta'],
-        ['titulo' => 'tarea 2', 'completado' => false, 'prioridad' => 'baja'],
-        ['titulo' => 'tarea 3', 'completado' => false, 'prioridad' => 'media'],
-        ['titulo' => 'tarea 4', 'completado' => true, 'prioridad' => 'baja'],
-        ['titulo' => 'tarea 5', 'completado' => true, 'prioridad' => 'alta']
-    ];
+switch ($accion) {
+    case 'login':
+        // Lógica para procesar el envío del formulario de login
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+
+            if (handleLogin($email, $password, $usuarios_bbdd)) {
+                header('Location: index.php?accion=dashboard'); // Redirige al dashboard
+                exit;
+            } else {
+                $error = "Credenciales incorrectas."; // Variable para la vista
+            }
+        }
+
+        // Si no es POST o el login falla, muestra la vista de login
+        include '../app/views/login.view.php';
+        break;
+
+    case 'dashboard':
+        // Protección de la ruta (Tema 5)
+        if (!checkAuth()) {
+            header('Location: index.php?accion=login');
+            exit;
+        }
+
+        // Si estamos autenticados, preparamos los datos para la vista
+        $tareas = [
+            ['titulo' => 'Implementar Login', 'completado' => true, 'prioridad' => 'alta'],
+            ['titulo' => 'Añadir Pruebas Unitarias', 'completado' => false, 'prioridad' => 'media']
+        ];
+
+        // Cargamos la vista del dashboard
+        include '../app/views/tareas.view.php';
+        break;
+
+    case 'logout':
+        handleLogout();
+        break;
+
+    default:
+        echo "Error 404: Página no encontrada.";
+        break;
+}
 ?>
-
-<?php include '../app/views/header.php' ?>
-
-<h2>Tareas Pendientes</h2>
-<p class="date-display"><?php echo formatDate("2025-10-15"); ?></p>
-<ul>
-    <?php foreach ($tareas as $tarea): ?>
-        <?php 
-
-            echo renderizarTarea($tarea);
-                    
-        ?>
-    <?php endforeach; ?>
-</ul>
-
-<?php include '../app/views/footer.php' ?>
-
-        
